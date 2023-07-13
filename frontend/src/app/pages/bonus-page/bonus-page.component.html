@@ -1,0 +1,12 @@
+<div
+    style="
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    "
+>
+    <app-bonus-remarks *ngFor="let salesman of data" [salesman]="salesman">
+    </app-bonus-remarks>
+    <h4 *ngIf="data.length === 0">All Bonuses Are Saved</h4>
+</div>

@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+    <mat-icon class="app-icon">token</mat-icon>
+    <span class="appName">Integration Architectures</span>
+    <button
+        class="menu-button"
+        mat-flat-button
+        color="primary"
+        (click)="handleHome()"
+    >
+        Home
+    </button>
+    <button
+        class="menu-button"
+        mat-flat-button
+        color="primary"
+        (click)="handleBonus()"
+        *ngIf="user.role === 'ceo'"
+    >
+        Apply Bonuses
+    </button>
+    <!-- *ngFor specifies a foreach loop for rendering an element repeatedly; in double curly braces {{}} javascript-expressions/variables can be printed out to the page -->
+    <span class="spacer"></span>
+    <button mat-icon-button aria-label="Logout button" (click)="handleLogout()">
+        <mat-icon>logout</mat-icon>
+    </button>
+</mat-toolbar>

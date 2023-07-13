@@ -1,0 +1,107 @@
+<div
+    style="
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    "
+>
+    <div style="display: flex; flex-direction: column; align-items: center">
+        <h1>
+            <b>
+                {{ salesman.name }}
+            </b>
+        </h1>
+        <h4>Computed Bonus: ${{ salesman.totalBonus }}</h4>
+        <h4 *ngIf="salesman.remarks">CEO Remarks: {{ salesman.remarks }}</h4>
+    </div>
+    <div class="tableContainer">
+        <h2>Sales</h2>
+        <table
+            mat-table
+            [dataSource]="flattenedOrders"
+            class="mat-elevation-z8"
+            style="width: 80%"
+        >
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Product</th>
+                <td mat-cell *matCellDef="let order">{{ order.name }}</td>
+                <td mat-footer-cell *matFooterCellDef>
+                    <b> Total </b>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="customer">
+                <th mat-header-cell *matHeaderCellDef>Customer</th>
+                <td mat-cell *matCellDef="let order">
+                    {{ order.customerName }}
+                </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+            <ng-container matColumnDef="customerRating">
+                <th mat-header-cell *matHeaderCellDef>Customer Rating</th>
+                <td mat-cell *matCellDef="let order">
+                    {{ companyRating[order.customerRating] }}
+                </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+            <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef>Quantity</th>
+                <td mat-cell *matCellDef="let order">
+                    {{ order.quantity.split(".")[0] }}
+                </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+            <ng-container matColumnDef="bonus">
+                <th mat-header-cell *matHeaderCellDef>Bonus</th>
+                <td mat-cell *matCellDef="let order">${{ order.bonus }}</td>
+                <td mat-footer-cell *matFooterCellDef>
+                    <b> ${{ salesman.salesBonus }} </b>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="OrderColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: OrderColumns"></tr>
+            <tr mat-footer-row *matFooterRowDef="OrderColumns"></tr>
+        </table>
+    </div>
+    <div class="tableContainer">
+        <h2>Social Evaluations</h2>
+        <table
+            mat-table
+            [dataSource]="evaluationsArray"
+            class="mat-elevation-z8"
+            style="width: 65%"
+        >
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let eval">{{ eval.name }}</td>
+                <td mat-footer-cell *matFooterCellDef>
+                    <b> Total </b>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="target">
+                <th mat-header-cell *matHeaderCellDef>Target Value</th>
+                <td mat-cell *matCellDef="let eval">
+                    {{ eval.target }}
+                </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+            <ng-container matColumnDef="actual">
+                <th mat-header-cell *matHeaderCellDef>Actual Value</th>
+                <td mat-cell *matCellDef="let eval">
+                    {{ eval.actual }}
+                </td>
+                <td mat-footer-cell *matFooterCellDef></td>
+            </ng-container>
+            <ng-container matColumnDef="bonus">
+                <th mat-header-cell *matHeaderCellDef>Bonus</th>
+                <td mat-cell *matCellDef="let eval">${{ eval.bonus }}</td>
+                <td mat-footer-cell *matFooterCellDef>
+                    <b> ${{ salesman.evaluations.evaluationBonus }} </b>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="EvalColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: EvalColumns"></tr>
+            <tr mat-footer-row *matFooterRowDef="EvalColumns"></tr>
+        </table>
+    </div>
+</div>

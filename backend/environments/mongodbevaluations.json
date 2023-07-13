@@ -1,0 +1,32 @@
+[
+  {
+    "id": 9,
+    "year": 2022,
+    "openness": 4,
+    "leadership": 5,
+    "social": 3,
+    "attitude": 4,
+    "communication": 4,
+    "integrity": 3
+  },
+  {
+    "id": 2,
+    "year": 2022,
+    "openness": 4,
+    "leadership": 4,
+    "social": 4,
+    "attitude": 4,
+    "communication": 4,
+    "integrity": 4
+  },
+  {
+    "id": 93,
+    "year": 2022,
+    "openness": 3,
+    "leadership": 4,
+    "social": 3,
+    "attitude": 5,
+    "communication": 5,
+    "integrity": 5
+  }
+]

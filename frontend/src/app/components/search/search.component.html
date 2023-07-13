@@ -1,0 +1,25 @@
+<div
+    style="
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    "
+>
+    <div>
+        <mat-form-field>
+            <mat-label>Employee ID</mat-label>
+            <input
+                matInput
+                type="text"
+                (keyup)="onInputChange($event.target.value)"
+            />
+        </mat-form-field>
+    </div>
+    <div style="display: flex">
+        <app-salesman-card
+            *ngFor="let salesman of dataToShow"
+            [salesman]="salesman"
+        ></app-salesman-card>
+    </div>
+</div>
